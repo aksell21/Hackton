@@ -5,14 +5,14 @@ export async function validateFields({
     email,
     password,
     passwordConfirmation,
-    acceptsTerms,
+
 
 }) {
     const errors = cleanUndefinedProperties({
         email: await getEmailErrors(email),
         password: getPasswordErrors(password),
         passwordConfirmation: getPasswordConfirmationErrors(passwordConfirmation, password),
-        acceptsTerms: getAcceptsTermsErrors(acceptsTerms),
+
     })
 
 
@@ -61,11 +61,7 @@ function getPasswordConfirmationErrors(passwordConfirmation, password) {
     }
 }
 
-function getAcceptsTermsErrors(acceptsTerms) {
-    if (!acceptsTerms) {
-        return "Tem de aceitar os termos e condições para criar a sua conta."
-    }
-}
+
 
 function cleanUndefinedProperties(obj) {
     return Object.keys(obj)

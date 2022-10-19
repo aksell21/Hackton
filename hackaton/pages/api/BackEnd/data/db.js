@@ -2,7 +2,7 @@ import { MongoClient } from 'mongodb';
 const URL = process.env.MONGO_URL ?? 'mongodb://localhost:27017';
 let client
 
-const DATABASE = "hackton"
+const DATABASE = "hack406"
 const USER_COLLECTION = 'users'
 const SESSION_COLLECTION = 'sessions'
 
