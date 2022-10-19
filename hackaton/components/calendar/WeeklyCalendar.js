@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 import styles from "./WeeklyCalendar.module.css";
 import { useState } from "react";
 import Link from "next/link"
+=======
+import styles from "./WeeklyCalendar.module.css"
+import { useState } from "react"
+import Booking from "../booking/Booking"
+import Link from 'next/link'
+>>>>>>> afd1269ef0c64f5af32e5cf48b1cafd81dd1870c
 
 const WeeklyCalendar = () => {
   // Booking Handler

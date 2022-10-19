@@ -1,15 +1,21 @@
 import styles from "./Booking.module.css";
+<<<<<<< HEAD
 import Buttons from "../buttons/Buttons";
 import Link from "next/link";
+=======
+import Link from "next/link";
+import Buttons from "../buttons/Buttons";
+>>>>>>> afd1269ef0c64f5af32e5cf48b1cafd81dd1870c
 
 export default function Booking() {
   return (
     <div className={styles.outerDiv}>
       <div className={styles.innerDiv}>
-        <h1> Booking Details</h1>
+        <div className={styles.title}><h2>Booking Details</h2></div>
         <br />
-        <div className="bookingId">
-          <form>
+        <form>
+          <div className={styles.content}>
+
             Name:
             <br />
             <input id="username" name="username" placeholder="username" />
@@ -18,28 +24,16 @@ export default function Booking() {
             <br />
             <input id="Email" name="email" placeholder="email" />
             <br />
-            Exercise:
+            What we are going to work ?
+            <input type="text" placeholder="Chest"></input>
             <br />
-            <input type="checkbox" />
-            Muscles
-            <br />
-            <input type="checkbox" />
-            Shoulders <br />
-            <input type="checkbox" />
-            Leg day
-            <br />
-            <input type="checkbox" />
-            Other
-            <br />
-            <input id="details" name="details" />
-            <br />
-            <br />
-            <button
+            <Buttons
               type="submit"
               onClick={() => alert("Appointment Booked ")}
               className={styles.alert}
             >
               Book
+<<<<<<< HEAD
             </button>
           </form>
         </div>
@@ -111,6 +105,12 @@ export default function Booking() {
           </form>
         </div>
       </div>
+=======
+            </Buttons>
+          </div>
+        </form>
+      </div>
+>>>>>>> afd1269ef0c64f5af32e5cf48b1cafd81dd1870c
     </div>
   );
 }
