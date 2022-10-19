@@ -1,3 +1,4 @@
+import Buttons from "../buttons/Buttons";
 import styles from "./Booking.module.css";
 
 export default function Booking() {
@@ -38,13 +39,13 @@ export default function Booking() {
           <input id="details" name="details" />
           <br />
           <br />
-          <button
+          <Buttons
             type="submit"
             onClick={() => alert("Appointment Booked ")}
             className={styles.alert}
           >
             Book
-          </button>
+          </Buttons>
         </form>
       </div>
     </div>
