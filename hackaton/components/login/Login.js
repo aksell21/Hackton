@@ -50,7 +50,6 @@ export default function Login() {
                             name="password"
                             placeholder="password"
                         />
-
                         <br />
                         <Link href="/">
                             <Buttons onClick={() => handleAuthenticate()}>Login</Buttons>

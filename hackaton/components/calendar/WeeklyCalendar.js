@@ -9,7 +9,7 @@ const WeeklyCalendar = () => {
   };
 
     //STATES
-    const [isEmpty, setIsEmpty] = useState(true); // is the cell empty
+    const [isEmpty, setIsEmpty] = useState([true,false]); // is the cell empty
     const [bookingStatus, setBookingStatus] = useState("+") 
     
     // Booking Handler
@@ -17,7 +17,7 @@ const WeeklyCalendar = () => {
         setIsEmpty(current => !current); //makes the state from true to false
     } */
 
-
+    
     //Calendar as a table
     return (
         <div>
@@ -33,8 +33,8 @@ const WeeklyCalendar = () => {
                 </tr>
                 <tr>
                     <td id="td"><p>8:00 to 8:45</p></td>
-                        <td id="1"> {isEmpty && <Link href="/booking"><button className={styles.btn}>{bookingStatus}</button></Link>}</td>
-                        <td id="2"> {isEmpty && <Link href="/booking"><button className={styles.btn}>{bookingStatus}</button></Link>}</td>
+                        <td id="1" className={isEmpty[0] ? styles.tdTest: styles.tdTest2} onClick={() => setIsEmpty[0]}> {isEmpty[0] && <button className={styles.btn}>{bookingStatus}</button>}</td>
+                        <td id="2" className={isEmpty[1] ? styles.tdTest: styles.tdTest2}> {isEmpty[1] && <Link href="/booking"><button className={styles.btn}>{bookingStatus}</button></Link>}</td>
                         <td id="3"> { isEmpty &&  <Link href="/booking"><button className={styles.btn}>{bookingStatus}</button></Link>}</td>
                         <td id="4"> { isEmpty &&  <Link href="/booking"><button className={styles.btn}>{bookingStatus}</button></Link>}</td>
                         <td id="5"> { isEmpty &&  <Link href="/booking"><button className={styles.btn}>{bookingStatus}</button></Link>}</td>

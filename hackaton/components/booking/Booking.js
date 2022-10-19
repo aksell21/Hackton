@@ -6,12 +6,14 @@ import { useState } from 'react';
 import Link from "next/link"
 
 export default function Booking() {
-  const [appoint, setAppoint] = useState({ name: "", email: "", exercices: "" })
-
+  const [appoint, setAppoint] = useState({ name: "", email: "", exercices: "", data : "" })
   const handleSubmit = async (e) => {
     e.preventDefault()
     const resultado = await fazPedido("/api/adicionarappoint", "POST", appoint)
     setAppoint(res.body)
+    if (resultado.status === 400) {
+      setErro(resultado.body.messagens)
+    }
   }
 
   return (
@@ -21,7 +23,10 @@ export default function Booking() {
         <form onSubmit={handleSubmit}>
           <div className={styles.content}>
           Name:
-          <input id="username" name="username" placeholder="Name" />
+          <input id="username" name="username" placeholder="Name" 
+            value={appoint.name}
+            onChange={(e) => setAppoint(prevAuthValues => ({ ...prevAuthValues, name: e.target.value }))}
+          />
           <br />
           Email:
           <input id="Email" name="email" placeholder="email" />
