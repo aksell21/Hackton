@@ -6,11 +6,16 @@ const WeeklyCalendar = () => {
     const [date, setDate] = useState(new Date());
     //Change view to weekly
 
+    // Booking Handler
+    const addBookingHandler = () => {
+        console.log("clicked");
+    }
 
     return (
         <div>
             <table className={styles.table}>
-                <tr id="tr" > <th rowSpan="2">Timings</th><th colspan="5">WeekDays</th></tr>
+                <tbody>
+                <tr id="tr" > <th rowSpan="2">Timings</th><th colSpan="5">WeekDays</th></tr>
                 <tr>
                     <td id="td"><p>Monday</p></td>
                     <td id="td"><p>Tuesday</p></td>
@@ -20,11 +25,11 @@ const WeeklyCalendar = () => {
                 </tr>
                 <tr>
                     <td id="td"><p>9 to 10</p></td>
-                    <td id="td"></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td id="td"><button onClick={addBookingHandler} >+</button></td>
+                    <td>a</td>
+                    <td>a</td>
+                    <td>a</td>
+                    <td>a</td>
                 </tr>
                 <tr>
                     <td id="td"><p>10 to 11</p></td>
@@ -57,9 +62,8 @@ const WeeklyCalendar = () => {
                     <td></td>
                     <td></td>
                     <td></td>
-                </tr>
-
-
+                    </tr>
+                    </tbody>
             </table>
         </div>
     )
