@@ -10,13 +10,15 @@ const WeeklyCalendar = () => {
 
     //STATES
     const [isEmpty, setIsEmpty] = useState(true); // is the cell empty
-    const [booked, setBooked] = useState("+")
+    const [bookingStatus, setBookingStatus] = useState("+") 
     
     // Booking Handler
    /*  const addBookingHandler = () => {
         setIsEmpty(current => !current); //makes the state from true to false
     } */
 
+
+    //Calendar as a table
     return (
         <div>
             <table className={styles.table}>
@@ -31,11 +33,11 @@ const WeeklyCalendar = () => {
                 </tr>
                 <tr>
                     <td id="td"><p>8:00 to 8:45</p></td>
-                        <td id="1"> {isEmpty && <Link href="/BookingPage"><button className={styles.btn}>{booked}</button></Link>}</td>
-                        <td id="2"> {isEmpty && <Link href="/BookingPage"><button className={styles.btn}>{booked}</button></Link>}</td>
-                        <td id="3"> { isEmpty &&  <Link href="/BookingPage"><button className={styles.btn}>{booked}</button></Link>}</td>
-                        <td id="4"> { isEmpty &&  <Link href="/BookingPage"><button className={styles.btn}>{booked}</button></Link>}</td>
-                        <td id="5"> { isEmpty &&  <Link href="/BookingPage"><button className={styles.btn}>{booked}</button></Link>}</td>
+                        <td id="1"> {isEmpty && <Link href="/booking"><button className={styles.btn}>{bookingStatus}</button></Link>}</td>
+                        <td id="2"> {isEmpty && <Link href="/booking"><button className={styles.btn}>{bookingStatus}</button></Link>}</td>
+                        <td id="3"> { isEmpty &&  <Link href="/booking"><button className={styles.btn}>{bookingStatus}</button></Link>}</td>
+                        <td id="4"> { isEmpty &&  <Link href="/booking"><button className={styles.btn}>{bookingStatus}</button></Link>}</td>
+                        <td id="5"> { isEmpty &&  <Link href="/booking"><button className={styles.btn}>{bookingStatus}</button></Link>}</td>
                 </tr>
                 <tr>
                     <td id="6"><p>9:00 to 9:45</p></td>
