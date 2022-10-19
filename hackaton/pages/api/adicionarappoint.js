@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb"
-import { getUserById } from "../../src/data/users";
+import { addAppointement, getUserById } from "../../src/data/users";
 
 export default async function (req, res) {
     if (req.method === "POST") {
@@ -9,6 +9,7 @@ export default async function (req, res) {
             exercise,
         } = req.body
         console.log("Cheguei", req.body)
+        await addAppointement(req.body)
 
         if (!req.body) {
             return value === undefined || value.length === 0

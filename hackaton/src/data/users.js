@@ -3,6 +3,7 @@ import { getMongoCollection } from "./db"
 
 const DATABASE = "hack406"
 const USER_COLLECTION = 'users'
+const APPOINTMENT_COLLECTION = 'appointments'
 
 export async function getUserByEmail(email) {
     const collection = await getMongoCollection(DATABASE, USER_COLLECTION)
@@ -17,7 +18,7 @@ export async function addUser(user) {
 }
 
 export async function addAppointement(cliente) {
-    const collection = await getMongoCollection(DATABASE, USER_COLLECTION)
+    const collection = await getMongoCollection(DATABASE, APPOINTMENT_COLLECTION)
     const result = await collection.insertOne(cliente)
     return result.insertedId
 }
