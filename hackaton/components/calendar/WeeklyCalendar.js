@@ -3,9 +3,8 @@ import { useState } from "react"
 
 const WeeklyCalendar = () => {
 
-    const [date, setDate] = useState(new Date());
-    //Change view to weekly
-
+    
+    
     // Booking Handler
     const addBookingHandler = () => {
         console.log("clicked");
