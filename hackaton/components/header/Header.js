@@ -8,8 +8,8 @@ export default function Header() {
     return (
         <div>
             <div className={styles.headBar}>
-                Logo
-                <Link href="/"><Buttons>Login</Buttons ></Link>
+                <Link href="/">Logo</Link>
+                <Link href="/login"><Buttons>Login</Buttons ></Link>
             </div>
             <div className={styles.headSmallBar}></div>
         </div>

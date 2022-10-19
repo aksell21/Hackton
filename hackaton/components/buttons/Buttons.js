@@ -7,8 +7,10 @@ import styles from "./Buttons.module.css";
 
 const Buttons = ({ children, ...props }) => {
   return (
-    <div>
-      <button {...props} className={styles.button}></button>
+    <div className={styles.buttonDiv}>
+      <button {...props} className={styles.button}>
+        {children}
+      </button>
     </div>
   );
 };
