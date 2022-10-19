@@ -23,6 +23,22 @@ export default function Booking() {
           <br />
           <input id="Email" name="email" placeholder="email" />
           <br />
+          Date:
+          <br />
+          <input type="date" id="Email" name="email" placeholder="dd/mm/yyyy" />
+          <br />
+          Exercise:
+          <br />
+          <select id="exercise" name="Exercise">
+            <option value="v1">Muscles</option>
+            <option value="v2">Shoulders</option>
+            <option value="v3">Leg day</option>
+            <option value="v4">Other</option>
+          </select>
+          <br />
+          <Link href="/main-page">
+            <Buttons type="submit"> Sumbit </Buttons>
+          </Link>
           Exercise:
           <br />
           <input type="checkbox" />
