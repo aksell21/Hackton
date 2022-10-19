@@ -5,7 +5,8 @@ import { React } from "react";
 import { fazPedido } from "../../pages/api/src";
 import { useRouter } from 'next/router'
 
-export default function Login() {
+export default function Login() { /*
+    const router = useRouter()
     const [authValues, setAuthValues] = useState({ email: "", password: "" })
     const [erro, setError] = useState("")
     const handleAuthenticate = async () => {
@@ -21,7 +22,7 @@ export default function Login() {
         }
 
 
-    }
+    }*/
 
     return (
         <div className={styles.loginDivOut}>
@@ -31,23 +32,23 @@ export default function Login() {
                     <div className={styles.loginForm}>
                         <span>Username:</span>
                         <input
-                            alue={authValues.email}
-                            onChange={(e) => setAuthValues(prevAuthValues => ({ ...prevAuthValues, email: e.target.value }))}
+                            /*value={authValues.email}
+                            onChange={(e) => setAuthValues(prevAuthValues => ({ ...prevAuthValues, email: e.target.value }))}*/
                             id="username"
                             name="username"
                             placeholder="Email" />
-                        {erro.email && <div>{erro.email}</div>}
+
                         <br />
                         <span>Password:</span>
                         <input
-                            value={authValues.password}
-                            onChange={(e) => setAuthValues(prevAuthValues => ({ ...prevAuthValues, password: e.target.value }))}
+                            /*value={authValues.password}
+                            onChange={(e) => setAuthValues(prevAuthValues => ({ ...prevAuthValues, password: e.target.value }))}*/
                             type="password"
                             id="password"
                             name="password"
                             placeholder="password"
                         />
-                        {erro.password && <div>{erro.password}</div>}
+
                         <br />
                         <Link href="/">
                             <Buttons onClick={() => handleAuthenticate()}>Login</Buttons>

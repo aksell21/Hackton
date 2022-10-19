@@ -1,48 +1,60 @@
+import { Children } from "react";
+import Buttons from "../buttons/Buttons";
 import styles from "./Registration.module.css"
+import { useRouter } from 'next/router';
+import { fazPedido } from "../../pages/api/src";
 
 export default function Register() {
-    return (
-      <div
-        className="register"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <h1> Registration</h1>
+  const router = useRouter()
+  const [user, setUser] = useState({ user: "", email: "", password: "", number: "" })
+  const [erro, setErro] = useState("")
+  const [mensagem, setMensagem] = useState("")
+
+
+  const handleSubmit = async () => {
+
+    setErro("")
+    const resultado = await fazPedido("/api/signup/", "POST", user)
+    // const state = setState(resultado.body)
+
+    if (resultado.status === 400) {
+      setErro(resultado.body.errors)
+    }
+
+    if (resultado.status === 201) {
+      console.log(resultado.status)
+      router.push("/")
+
+    }
+
+    setMensagem(resultado.body.message)
+
+  }
+  return (
+    <div className={styles.outterDiv}>
+      <div className={styles.innerDiv}>
+        <div className={styles.title}><h2>Registration</h2></div>
         <form>
-          <div className="registerName">
-            Username:
-            <br />
-            <input id="username" name="username" placeholder="usrename" />
-            <br />
-            Email:
-            <br />
-            <input id="email" name="email" placeholder="Email" />
-            <br />
-            Password:
-            <br />
+          <div className={styles.content}>
+            <span>Name:</span>
+
             <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="password"
-            />
-            <br />
-            Confirm Password:
-            <br />
+              value={user.user}
+              onChange={(e) => setUser(prevAuthValues => ({ ...prevAuthValues, user: e.target.value }))} />
+            <span>E-mail:</span>
+
             <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              placeholder="Confirm Password"
+              onChange={(e) => setUser(prevAuthValues => ({ ...prevAuthValues, email: e.target.value }))}
+              placeholder="example@example.com"
             />
-            <br />
-            <button type="submit"> Register </button>
+            <span>Number:</span>
+            <input onChange={(e) => setUser(prevAuthValues => ({ ...prevAuthValues, number: e.target.value }))} placeholder="999 999 999" />
+
           </div>
+          <Buttons
+            onClick={() => handleSubmit()}>Register</Buttons>
         </form>
       </div>
-    );
-  }
-  
+    </div>
+  );
+}

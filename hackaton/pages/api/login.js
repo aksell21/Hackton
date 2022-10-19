@@ -29,8 +29,5 @@ export default async function (req, res) {
             const token = await addSession(user._id)
             res.status(200).json({ token })
         }
-
-
-
     }
 }

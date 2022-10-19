@@ -4,14 +4,11 @@ import { checkPasswordStrength, validateEmail } from "./common"
 export async function validateFields({
     email,
     password,
-    passwordConfirmation,
-
-
+    number,
 }) {
     const errors = cleanUndefinedProperties({
         email: await getEmailErrors(email),
         password: getPasswordErrors(password),
-        passwordConfirmation: getPasswordConfirmationErrors(passwordConfirmation, password),
 
     })
 
@@ -51,17 +48,6 @@ function getPasswordErrors(password) {
         return "A sua password deve ter pelo menos um número, uma mínuscula, uma maiúscula e um símbolo."
     }
 }
-
-function getPasswordConfirmationErrors(passwordConfirmation, password) {
-    if (checkRequiredValueMissing(passwordConfirmation)) {
-        return "Por favor introduza novamente a sua password."
-    }
-    if (password !== passwordConfirmation) {
-        return "As passwords não coincidem."
-    }
-}
-
-
 
 function cleanUndefinedProperties(obj) {
     return Object.keys(obj)
