@@ -1,48 +1,24 @@
+import { Children } from "react";
+import Buttons from "../buttons/Buttons";
 import styles from "./Registration.module.css"
 
 export default function Register() {
-    return (
-      <div
-        className="register"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <h1> Registration</h1>
+  return (
+    <div className={styles.outterDiv}>
+      <div className={styles.innerDiv}>
+        <div className={styles.title}><h2>Registration</h2></div>
         <form>
-          <div className="registerName">
-            Username:
-            <br />
-            <input id="username" name="username" placeholder="usrename" />
-            <br />
-            Email:
-            <br />
-            <input id="email" name="email" placeholder="Email" />
-            <br />
-            Password:
-            <br />
-            <input
-              type="password"
-              id="password"
-              name="password"
-              placeholder="password"
-            />
-            <br />
-            Confirm Password:
-            <br />
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              placeholder="Confirm Password"
-            />
-            <br />
-            <button type="submit"> Register </button>
+          <div className={styles.content}>
+            <span>Name:</span>
+            <input />
+            <span>E-mail:</span>
+            <input placeholder="example@example.com" />
+            <span>Number:</span>
+            <input placeholder="999 999 999" />
           </div>
+          <Buttons>Register</Buttons>
         </form>
       </div>
-    );
-  }
-  
+    </div>
+  );
+}

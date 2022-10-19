@@ -1,6 +1,9 @@
 import styles from "./Booking.module.css";
+<<<<<<< HEAD
 import Link from "next/link";
 import Buttons from "../buttons/Buttons";
+=======
+>>>>>>> 6b313754c2e050cbdd2024274e8259e5d553822d
 
 export default function Booking() {
   return (
@@ -18,12 +21,17 @@ export default function Booking() {
         <form>
           Name:
           <br />
+<<<<<<< HEAD
           <input id="username" name="username" placeholder="username" />
+=======
+          <input id="username" name="username" placeholder="usrename" />
+>>>>>>> 6b313754c2e050cbdd2024274e8259e5d553822d
           <br />
           Email:
           <br />
           <input id="Email" name="email" placeholder="email" />
           <br />
+<<<<<<< HEAD
           Date:
           <br />
           <input type="date" id="Email" name="email" placeholder="dd/mm/yyyy" />
@@ -40,6 +48,31 @@ export default function Booking() {
           <Link href="/main-page">
             <Buttons type="submit"> Sumbit </Buttons>
           </Link>
+=======
+          Exercise:
+          <br />
+          <input type="checkbox" />
+          Muscles
+          <br />
+          <input type="checkbox" />
+          Shoulders <br />
+          <input type="checkbox" />
+          Leg day
+          <br />
+          <input type="checkbox" />
+          Other
+          <br />
+          <input id="details" name="details" />
+          <br />
+          <br />
+          <button
+            type="submit"
+            onClick={() => alert("Appointment Booked ")}
+            className={styles.alert}
+          >
+            Book
+          </button>
+>>>>>>> 6b313754c2e050cbdd2024274e8259e5d553822d
         </form>
       </div>
     </div>
