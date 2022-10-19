@@ -7,14 +7,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-<<<<<<< HEAD
-
-  margin-top: 15%;
-  width: 50%;
-  margin-left: 25%;
-  height: 100px;
-=======
->>>>>>> afd1269ef0c64f5af32e5cf48b1cafd81dd1870c
 }
 .table > tbody > tr > th {
   border: 2px solid #000000;
