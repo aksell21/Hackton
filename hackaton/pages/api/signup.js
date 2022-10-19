@@ -1,5 +1,5 @@
-import { addUser } from "./data/users"
-import { validateFields } from "./services/validations"
+import { addUser } from "../../src/data/users"
+import { validateFields } from "../../src/services/validations"
 
 export default async function (req, res) {
     if (req.method === "POST") {

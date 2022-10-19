@@ -2,19 +2,21 @@ import Buttons from "../buttons/Buttons";
 import styles from "./Login.module.css"
 import Link from "next/link"
 import { React } from "react";
+import { useState } from "react";
 import { fazPedido } from "../../pages/api/src";
-import { useRouter } from 'next/router'
 
-export default function Login() { /*
-    const router = useRouter()
-    const [authValues, setAuthValues] = useState({ email: "", password: "" })
-    const [erro, setError] = useState("")
+
+export default function Login() {
+
+    const [conta, setContas] = useState({ email: "", password: "" })
+
     const handleAuthenticate = async () => {
 
-        setError("")
-        const res = await fazPedido("/api/login/", "POST", authValues)
-        setAuthValues(res.body)
+        const res = await fazPedido("/api/login/", "POST", conta)
+        setContas(res.body)
+
         console.log(res)
+
         localStorage.setItem("token", res.body.token)
 
         if (res.status === 400) {
@@ -22,7 +24,7 @@ export default function Login() { /*
         }
 
 
-    }*/
+    }
 
     return (
         <div className={styles.loginDivOut}>
@@ -32,8 +34,8 @@ export default function Login() { /*
                     <div className={styles.loginForm}>
                         <span>Username:</span>
                         <input
-                            /*value={authValues.email}
-                            onChange={(e) => setAuthValues(prevAuthValues => ({ ...prevAuthValues, email: e.target.value }))}*/
+                            value={setContas.email}
+                            onChange={(e) => setContas(prevAuthValues => ({ ...prevAuthValues, email: e.target.value }))}
                             id="username"
                             name="username"
                             placeholder="Email" />
@@ -41,8 +43,8 @@ export default function Login() { /*
                         <br />
                         <span>Password:</span>
                         <input
-                            /*value={authValues.password}
-                            onChange={(e) => setAuthValues(prevAuthValues => ({ ...prevAuthValues, password: e.target.value }))}*/
+                            value={setContas.password}
+                            onChange={(e) => setContas(prevAuthValues => ({ ...prevAuthValues, password: e.target.value }))}
                             type="password"
                             id="password"
                             name="password"

@@ -9,7 +9,6 @@ export async function validateFields({
     const errors = cleanUndefinedProperties({
         email: await getEmailErrors(email),
         password: getPasswordErrors(password),
-
     })
 
 

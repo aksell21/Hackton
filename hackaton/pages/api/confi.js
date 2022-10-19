@@ -1,5 +1,5 @@
 import { ObjectId } from "mongodb"
-import { getUserById } from "./data/users";
+import { getUserById } from "../../src/data/users";
 
 export default async function (req, res) {
 

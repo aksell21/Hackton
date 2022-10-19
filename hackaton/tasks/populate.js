@@ -6,6 +6,7 @@ const DATABASE = "hack406"
 const USER_COLLECTION = 'users'
 
 
+
 async function connectToMongo() {
     try {
         if (!client) {
@@ -27,9 +28,9 @@ async function addUser(user) {
     const result = await collection.insertOne(user)
     return result.insertedId
 }
-async function addAppointement(user) {
+async function addAppointement(appointement) {
     const collection = await getMongoCollection(DATABASE, USER_COLLECTION)
-    const result = await collection.insertOne(user)
+    const result = await collection.insertOne(appointement)
     return result.insertedId
 }
 
@@ -41,34 +42,21 @@ const users = [
     },
 
 ]
-/*const appointements = [
+const appointements = [
     {
         name: "Bibufcaidu",
-        email: "uiweghiwff@esdf.aushd"
+        email: "uiweghiwff@esdf.aushd",
+        passoword: ""
     },
-    {
-        name: "Bibufcaidu",
-        email: "uiweghiwff@esdf.aushd"
-    },
-    {
-        name: "Bibufcaidu",
-        email: "uiweghiwff@esdf.aushd"
-    },
-    {
-        name: "Bibufcaidu",
-        email: "uiweghiwff@esdf.aushd"
-    },
-    {
-        name: "Bibufcaidu",
-        email: "uiweghiwff@esdf.aushd"
-    },
+
 ]
-*/
+
 users.forEach(async user => {
     await addUser(user)
 })
-//appointements.forEach(async appointement => {
-//  await addAppointement(appointement)
-//})
+
+appointements.forEach(async appointement => {
+    await addAppointement(appointement)
+})
 
 console.log("Done Adding Users")

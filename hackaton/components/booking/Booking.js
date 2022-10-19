@@ -1,6 +1,16 @@
 import styles from "./Booking.module.css";
+import { React } from "react"
+import { fazPedido } from "../../pages/api/src";
 
 export default function Booking() {
+  const [appoint, setAppoint] = useState({ name: "", email: "", exercices: "" })
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const resultado = await fazPedido("/api/adicionarappoint", "POST", appoint)
+    setAppoint(res.body)
+  }
+
   return (
     <div
       className="booking"
@@ -13,7 +23,7 @@ export default function Booking() {
       <h1> Booking Details</h1>
       <br />
       <div className="bookingId">
-        <form>
+        <form onSubmit={handleSubmit}>
           Name:
           <br />
           <input id="username" name="username" placeholder="usrename" />
@@ -40,7 +50,6 @@ export default function Booking() {
           <br />
           <button
             type="submit"
-            onClick={() => alert("Appointment Booked ")}
             className={styles.alert}
           >
             Book

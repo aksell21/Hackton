@@ -8,8 +8,6 @@ export default function Register() {
   const router = useRouter()
   const [user, setUser] = useState({ user: "", email: "", password: "", number: "" })
   const [erro, setErro] = useState("")
-  const [mensagem, setMensagem] = useState("")
-
 
   const handleSubmit = async () => {
 

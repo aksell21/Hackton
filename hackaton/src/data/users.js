@@ -15,3 +15,9 @@ export async function addUser(user) {
     const result = await collection.insertOne(user)
     return result.insertedId
 }
+
+export async function addAppointement(cliente) {
+    const collection = await getMongoCollection(DATABASE, USER_COLLECTION)
+    const result = await collection.insertOne(cliente)
+    return result.insertedId
+}
