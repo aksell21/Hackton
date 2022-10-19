@@ -29,7 +29,7 @@ export default function Login() {
     return (
         <div className={styles.loginDivOut}>
             <div className={styles.loginDiv}>
-                <h2> Login</h2>
+                <h1> Login</h1>
                 <form>
                     <div className={styles.loginForm}>
                         <span>Username:</span>
