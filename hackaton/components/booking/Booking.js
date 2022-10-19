@@ -4,12 +4,19 @@ import { fazPedido } from "../../pages/api/src";
 import Buttons from "../buttons/Buttons";
 
 export default function Booking() {
-  const [appoint, setAppoint] = useState({ name: "", email: "", exercices: "" })
+  const [appoint, setAppoint] = useState({ name: "", email: "", exercices: "", data : "" })
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     const resultado = await fazPedido("/api/adicionarappoint", "POST", appoint)
     setAppoint(res.body)
+
+    if (resultado.status === 400) {
+      setErro(resultado.body.messagens)
+    }
+   
+
   }
 
   return (
@@ -27,15 +34,23 @@ export default function Booking() {
         <form onSubmit={handleSubmit}>
           Name:
           <br />
-          <input id="username" name="username" placeholder="usrename" />
+          <input 
+          value={appoint.name}
+          onChange={(e) => setAppoint(prevAuthValues => ({ ...prevAuthValues, name: e.target.value }))}
+          id="username" name="username" placeholder="usrename" />
           <br />
           Email:
           <br />
-          <input id="Email" name="email" placeholder="email" />
+          <input 
+          value={appoint.email}
+          onChange={(e) => setAppoint(prevAuthValues => ({ ...prevAuthValues, name: e.target.value }))}
+          id="Email" name="email" placeholder="email" />
           <br />
           Date:
           <br />
           <input
+            value={appoint.data}
+            onChange={(e) => setAppoint(prevAuthValues => ({ ...prevAuthValues, data: e.target.value }))}
             type="date"
             id="Email"
             name="email"
@@ -44,7 +59,8 @@ export default function Booking() {
           <br />
           Exercise:
           <br />
-          <select id="exercise" name="Exercise">
+          <select id="exercise" name="Exercise" 
+          onChange={(e) => setAppoint(prevAuthValues => ({ ...prevAuthValues, exercices: e.target.value }))}>
             <option value="v1">Muscles</option>
             <option value="v2">Shoulders</option>
             <option value="v3">Leg day</option>

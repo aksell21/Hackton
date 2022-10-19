@@ -7,7 +7,7 @@ import { fazPedido } from "../../pages/api/src";
 
 
 export default function Login() {
-
+/*
     const [conta, setContas] = useState({ email: "", password: "" })
 
     const handleAuthenticate = async () => {
@@ -25,7 +25,7 @@ export default function Login() {
 
 
     }
-
+*/
     return (
         <div className={styles.loginDivOut}>
             <div className={styles.loginDiv}>
@@ -34,8 +34,8 @@ export default function Login() {
                     <div className={styles.loginForm}>
                         <span>Username:</span>
                         <input
-                            value={setContas.email}
-                            onChange={(e) => setContas(prevAuthValues => ({ ...prevAuthValues, email: e.target.value }))}
+                            /*value={setContas.email}
+                            onChange={(e) => setContas(prevAuthValues => ({ ...prevAuthValues, email: e.target.value }))}*/
                             id="username"
                             name="username"
                             placeholder="Email" />
@@ -43,8 +43,8 @@ export default function Login() {
                         <br />
                         <span>Password:</span>
                         <input
-                            value={setContas.password}
-                            onChange={(e) => setContas(prevAuthValues => ({ ...prevAuthValues, password: e.target.value }))}
+                         /*   value={setContas.password}
+                            onChange={(e) => setContas(prevAuthValues => ({ ...prevAuthValues, password: e.target.value }))}*/
                             type="password"
                             id="password"
                             name="password"
@@ -52,8 +52,8 @@ export default function Login() {
                         />
 
                         <br />
-                        <Link href="/">
-                            <Buttons onClick={() => handleAuthenticate()}>Login</Buttons>
+                        <Link href="/booking">
+                            <Buttons /* onClick={() => handleAuthenticate()}*/>Login</Buttons>
                         </Link>
                     </div>
                 </form>
