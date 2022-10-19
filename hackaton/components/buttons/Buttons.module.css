@@ -9,3 +9,8 @@
     font-size: 13px;
     font-weight: 600;
 }
+
+.buttonDiv {
+    display: flex;
+    justify-content: center;
+}
