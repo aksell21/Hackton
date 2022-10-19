@@ -9,7 +9,7 @@ export default function Header() {
         <div>
             <div className={styles.headBar}>
                 <Link href="/"><span>Odyssey</span></Link>
-                <Link href="/login"><Buttons>Login</Buttons ></Link>
+                <Link href="/"><Buttons>Login</Buttons ></Link>
             </div>
             <div className={styles.headSmallBar}></div>
         </div>
