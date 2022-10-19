@@ -1,6 +1,5 @@
 import styles from "./WeeklyCalendar.module.css";
 import { useState } from "react";
-import Booking from "../booking/Booking";
 import Link from "next/link";
 
 const WeeklyCalendar = () => {
@@ -10,7 +9,7 @@ const WeeklyCalendar = () => {
   };
 
   //STATES
-  const [isEmpty, setIsEmpty] = useState(true); // is the cell empty
+  const [isEmpty, setIsEmpty] = useState([true, false]); // is the cell empty
   const [bookingStatus, setBookingStatus] = useState("+");
 
   // Booking Handler
@@ -49,17 +48,19 @@ const WeeklyCalendar = () => {
             <td id="td">
               <p>8:00 to 8:45</p>
             </td>
-            <td id="1">
+            <td
+              id="1"
+              className={isEmpty[0] ? styles.tdTest : styles.tdTest2}
+              onClick={() => setIsEmpty[0]}
+            >
               {" "}
-              {isEmpty && (
-                <Link href="/booking">
-                  <button className={styles.btn}>{bookingStatus}</button>
-                </Link>
+              {isEmpty[0] && (
+                <button className={styles.btn}>{bookingStatus}</button>
               )}
             </td>
-            <td id="2">
+            <td id="2" className={isEmpty[1] ? styles.tdTest : styles.tdTest2}>
               {" "}
-              {isEmpty && (
+              {isEmpty[1] && (
                 <Link href="/booking">
                   <button className={styles.btn}>{bookingStatus}</button>
                 </Link>

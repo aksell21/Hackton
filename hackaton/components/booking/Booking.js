@@ -2,83 +2,48 @@ import styles from "./Booking.module.css";
 import { React } from "react"
 import { fazPedido } from "../../pages/api/src";
 import Buttons from "../buttons/Buttons";
+import { useState } from 'react';
+import Link from "next/link"
 
 export default function Booking() {
-  const [appoint, setAppoint] = useState({ name: "", email: "", exercices: "" })
-
+  const [appoint, setAppoint] = useState({ name: "", email: "", exercices: "", data : "" })
   const handleSubmit = async (e) => {
     e.preventDefault()
     const resultado = await fazPedido("/api/adicionarappoint", "POST", appoint)
     setAppoint(res.body)
+    if (resultado.status === 400) {
+      setErro(resultado.body.messagens)
+    }
   }
 
   return (
-    <div
-      className="booking"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      <h1> Booking Details</h1>
-      <br />
-      <div className="bookingId">
+    <div className={styles.outerDiv}>
+    <div className={styles.innerDiv}>
+      <div className={styles.title}><h1> Booking Details</h1></div>
         <form onSubmit={handleSubmit}>
+          <div className={styles.content}>
           Name:
-          <br />
-          <input id="username" name="username" placeholder="usrename" />
-          <br />
-          Email:
-          <br />
-          <input id="Email" name="email" placeholder="email" />
-          <br />
-          Date:
-          <br />
-          <input
-            type="date"
-            id="Email"
-            name="email"
-            placeholder="dd/mm/yyyy"
+          <input id="username" name="username" placeholder="Name" 
+            value={appoint.name}
+            onChange={(e) => setAppoint(prevAuthValues => ({ ...prevAuthValues, name: e.target.value }))}
           />
           <br />
-          Exercise:
+          Email:
+          <input id="Email" name="email" placeholder="email" />
           <br />
-          <select id="exercise" name="Exercise">
-            <option value="v1">Muscles</option>
-            <option value="v2">Shoulders</option>
-            <option value="v3">Leg day</option>
-            <option value="v4">Other</option>
-          </select>
-          <br />
-          <Link href="/main-page">
-            <Buttons type="submit"> Sumbit </Buttons>
-          </Link>
-          Exercise:
-          <br />
-          <input type="checkbox" />
-          Muscles
-          <br />
-          <input type="checkbox" />
-          Shoulders <br />
-          <input type="checkbox" />
-          Leg day
-          <br />
-          <input type="checkbox" />
-          Other
-          <br />
-          <input id="details" name="details" />
-          <br />
+          What are we working?
+          <input placeholder="Arms"/>
           <br />
           <Buttons
             type="submit"
             onClick={() => alert("Appointment Booked ")}
             className={styles.alert}
-          >
+            >
             Book
           </Buttons>
-        </form>
-      </div>
+          </div>
+       </form>
+     </div>
     </div>
   );
 }

@@ -6,7 +6,7 @@ export default function Home() {
 
   return (
     <div>
-      <Header />
+      <Header/>
       <div className={styles.container}></div>
     </div>
   );
