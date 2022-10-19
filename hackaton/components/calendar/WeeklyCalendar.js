@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-import styles from "./WeeklyCalendar.module.css"
-import { useState } from "react"
-import Booking from "../booking/Booking"
-import Link from 'next/link'
-=======
 import styles from "./WeeklyCalendar.module.css";
 import { useState } from "react";
->>>>>>> 6b313754c2e050cbdd2024274e8259e5d553822d
+import Link from "next/link"
 
 const WeeklyCalendar = () => {
   // Booking Handler
@@ -14,7 +8,6 @@ const WeeklyCalendar = () => {
     console.log("clicked");
   };
 
-<<<<<<< HEAD
     //STATES
     const [isEmpty, setIsEmpty] = useState(true); // is the cell empty
     const [booked, setBooked] = useState("+")
@@ -82,88 +75,5 @@ const WeeklyCalendar = () => {
         </div>
     )
 
-=======
-  return (
-    <div>
-      <table className={styles.table}>
-        <tbody>
-          <tr id="tr">
-            {" "}
-            <th rowSpan="2">Timings</th>
-          </tr>
-          <tr>
-            <td id="td">
-              <p>Monday</p>
-            </td>
-            <td id="td">
-              <p>Tuesday</p>
-            </td>
-            <td id="td">
-              <p>Wednesday</p>
-            </td>
-            <td id="td">
-              <p>Thursday</p>
-            </td>
-            <td id="td">
-              <p>Friday</p>
-            </td>
-          </tr>
-          <tr>
-            <td id="td">
-              <p>9 to 10</p>
-            </td>
-            <td id="td">
-              <button onClick={addBookingHandler}>+</button>
-            </td>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
-            <td>a</td>
-          </tr>
-          <tr>
-            <td id="td">
-              <p>10 to 11</p>
-            </td>
-            <td id="7" onClick={() => console.log("hey key 7")}></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td id="td">
-              <p>Segunda</p>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td id="td">
-              <p>Segunda</p>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td id="td">
-              <p>Segunda</p>
-            </td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  );
->>>>>>> 6b313754c2e050cbdd2024274e8259e5d553822d
 };
 export default WeeklyCalendar;
