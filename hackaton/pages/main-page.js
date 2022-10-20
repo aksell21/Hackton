@@ -21,21 +21,23 @@ const localizer = dateFnsLocalizer({
   locales,
 });
 
-// Dummy data
+// DUMMY DATA
 const bookings = [
   {
     title: "Hackathon",
-    allDay: true,
-    start: new Date(2022, 9, 19),
-    end: new Date(2022, 9, 20),
+    allDay: false,
+    start: new Date(2022, 9, 19, 10),
+    end: new Date(2022, 9, 19, 11),
   },
   {
     title: "Vacation",
-    start: new Date(2022, 9, 24),
-    end: new Date(2022, 9, 26),
+    allDay: false,
+    start: new Date(2022, 9, 24, 10),
+    end: new Date(2022, 9, 24, 11),
   },
   {
     title: "Meeting",
+    allDay: false,
     start: new Date(2022, 10, 10, 10, 10, 10),
     end: new Date(2022, 10, 13, 10, 10, 10),
   },
@@ -43,8 +45,16 @@ const bookings = [
 
 export default function MainPage() {
   //STATES
-  const [newEvent, setNewEvent] = useState({ title: "", start: "", end: "" });
+  const [newEvent, setNewEvent] = useState({
+    title: "",
+    start: "",
+    end: "",
+    exercise: "",
+    allDay: false,
+  });
   const [allBokkings, setAllBookings] = useState(bookings); // make all events into a state
+
+  const [defaultBoolean, setDefaultBoolean] = useState(false);
 
   // Event Handlers
   const handleAddEvent = () => {
@@ -62,12 +72,18 @@ export default function MainPage() {
           placeholder="Add Title"
           style={{ width: "20%", marginRight: "10px" }}
           value={newEvent.title}
-          onChange={(e) => setNewEvent({ ...newEvent, title: e.target.value })}
+          onChange={(e) =>
+            setNewEvent({
+              ...newEvent,
+              title: e.target.value,
+              allDay: defaultBoolean,
+            })
+          }
         ></input>
       </div>
 
       <DatePicker
-        placeholderText="Start Date"
+        placeholderText="Select Date"
         style={{ marginRight: "10px" }}
         selected={newEvent.start}
         onChange={(start) => setNewEvent({ ...newEvent, start })}
@@ -77,16 +93,27 @@ export default function MainPage() {
         selected={newEvent.end}
         onChange={(end) => setNewEvent({ ...newEvent, end })}
       />
+
+      <input
+        type="text"
+        placeholder="Exercise:"
+        value={newEvent.exercise}
+        onChange={(e) => setNewEvent({ ...newEvent, exercise: e.target.value })}
+      ></input>
+
       <Buttons style={{ marginTop: "10px" }} onClick={handleAddEvent}>
         Submit Event
       </Buttons>
 
       <Calendar
+        selectable
+        resizable
+        date={new Date(Date.now())}
+        defaultView="week"
         localizer={localizer}
         events={allBokkings}
         startAccessor="start"
         endAccessor="end"
-        a
         style={{ height: 500, margin: "50px" }}
       />
     </div>
