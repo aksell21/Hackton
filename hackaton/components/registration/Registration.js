@@ -4,6 +4,7 @@ import styles from "./Registration.module.css"
 import { fazPedido } from "../../src/pedidos";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link"
 export default function Register() {
 
 
@@ -62,7 +63,7 @@ export default function Register() {
             <input onChange={(e) => setUser(prevAuthValues => ({ ...prevAuthValues, number: e.target.value }))} placeholder="999 999 999" />
 
           </div>
-          <Buttons>Adicionar Um Cliente a base de dados</Buttons>
+          <Link href="/main-page"><Buttons>Adicionar Cliente</Buttons></Link>
         </form>
       </div>
     </div>

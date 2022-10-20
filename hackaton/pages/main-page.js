@@ -134,7 +134,3 @@ export default function MainPage() {
     />
   );
 }
-
-MainPage.propTypes = {
-  localizer: PropTypes.instanceOf(DateLocalizer),
-};
