@@ -9,8 +9,12 @@ export default function Header() {
         <div>
             <div className={styles.headBar}>
                 <Link href="/"><span>Odyssey</span></Link>
+<<<<<<< HEAD
               
               
+=======
+                <Link href="/"><Buttons>Login</Buttons ></Link>
+>>>>>>> 8beaa5a1661b84608d6d4f0f05ac8b08efd2e16a
             </div>
             <div className={styles.headSmallBar}></div>
         </div>
