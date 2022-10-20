@@ -20,6 +20,7 @@ export default function Header() {
     </div>
   );
 }
+<<<<<<< HEAD
 export function HeaderLoged() {
   return (
     <div>
@@ -32,3 +33,11 @@ export function HeaderLoged() {
     </div>
   )
 }
+=======
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> a8f4b78636b4a57a7313a9b0db37d1bd8da02dfd
+>>>>>>> e94d9652785d5b5c2c7b7349a125fef14b335947

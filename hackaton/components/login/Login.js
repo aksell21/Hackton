@@ -2,10 +2,12 @@ import Buttons from "../buttons/Buttons";
 import styles from "./Login.module.css"
 import Link from "next/link"
 import { React } from "react";
-import { useState } from "react";
-import { fazPedido } from "../../pages/api/src";
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> a8f4b78636b4a57a7313a9b0db37d1bd8da02dfd
 export default function Login() {
     /*
         const [conta, setContas] = useState({ email: "", password: "" })
