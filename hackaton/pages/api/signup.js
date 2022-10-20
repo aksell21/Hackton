@@ -10,7 +10,7 @@ export default async function (req, res) {
             number
 
         } = req.body
-        console.log("Cheguei")
+        console.log("Cheguei",req.body)
 
         const validation = await validateFields(req.body)
         if (validation.success) {

@@ -51,7 +51,7 @@ export default function Login() {
                             placeholder="password"
                         />
                         <br />
-                        <Link href="/Booking">
+                        <Link href="/booking">
                             <Buttons /* onClick={() => handleAuthenticate()}*/>Login</Buttons>
                         </Link>
                     </div>

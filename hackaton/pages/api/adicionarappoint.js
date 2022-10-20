@@ -15,7 +15,6 @@ export default async function (req, res) {
 
         if (!resulta) {
             return req.body === undefined || req.body.length === 0
-           
         }
         res.status(200).json({ message: 'ok' })
     }
