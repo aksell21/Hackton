@@ -29,5 +29,5 @@ export function HeaderLoged() {
       </div>
       <div className={styles.headSmallBar}></div>
     </div>
-  )
+  );
 }
