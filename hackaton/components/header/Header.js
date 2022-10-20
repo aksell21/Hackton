@@ -21,7 +21,7 @@ export function HeaderLoged() {
     <div>
       <div className={styles.headBar}>
         <Link href="/main-page">
-          <span className={styles.title}>Odyssey</span>
+          <span>Odyssey</span>
         </Link>
         <Link href="/">
           <Buttons>Logout</Buttons>
