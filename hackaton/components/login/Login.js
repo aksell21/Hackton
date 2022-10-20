@@ -4,10 +4,6 @@ import Link from "next/link"
 import { React } from "react";
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a8f4b78636b4a57a7313a9b0db37d1bd8da02dfd
 export default function Login() {
     /*
         const [conta, setContas] = useState({ email: "", password: "" })

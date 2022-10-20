@@ -1,4 +1,3 @@
-import styles from "./Calendar.module.css"
 import { Calendar, dateFnsLocalizer, DateLocalizer } from "react-big-calendar";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
@@ -8,6 +7,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-datepicker/dist/react-datepicker.css";
 import React, { useState, useCallback, useMemo } from "react";
 import PropTypes from "prop-types";
+import { fazPedido } from "../../src/pedidos"
 
 const locales = {
     "en-US": require("date-fns/locale/en-US"),
@@ -46,6 +46,7 @@ const bookings = [
 // JSX code
 export default function MainPage() {
     //STATES
+    //const resultado = await fazPedido("/api/adicionarappoint", "POST", appoint);
     const [newEvent, setNewEvent] = useState({
         title: "",
         start: "",
@@ -61,17 +62,37 @@ export default function MainPage() {
     };
 
     const handleSelectSlot = useCallback(
-        ({ start, end }) => {
-            const title = window.prompt("Add Title:");
+        async ({ start, end }) => {
+            const title = window.prompt("Add Execercise   :");
             if (title) {
+                console.log("YEEHOO")
+                const resultado = await fazPedido("/api/adicionarappoint", "POST", {
+                    title,
+                    start,
+                    end,
+
+                });
                 setAllBookings((prev) => [...prev, { start, end, title }]);
+                // setNewEvent(resultado.body)
+
+            } else {
+
+                console.log("WOOHOO")
             }
         },
         [setAllBookings]
     );
 
     const handleSelectEvent = useCallback(
-        (event) => window.alert(event.title),
+        (event) => {
+            const alerta = window.confirm(event.title)
+            if (alerta === true) {
+                console.log("OK")
+            } else {
+                console.log("NOT OK")
+
+            }
+        },
         []
     );
 
@@ -93,8 +114,10 @@ export default function MainPage() {
             endAccessor="end"
             onSelectEvent={handleSelectEvent}
             onSelectSlot={handleSelectSlot}
+            // onSelectEnd={() => console.log("HEY HO")}
             scrollToTime={scrollToTime}
             style={{ height: 500, margin: "50px" }}
+
         />
     );
 }
