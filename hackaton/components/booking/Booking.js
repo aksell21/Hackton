@@ -12,6 +12,7 @@ export default function Booking() {
     exercices: "",
     data: "",
   });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const resultado = await fazPedido("/api/adicionarappoint", "POST", appoint);
@@ -30,10 +31,8 @@ export default function Booking() {
         <form onSubmit={handleSubmit}>
           <div className={styles.content}>
             Name:
+            <br />
             <input
-              id="username"
-              name="username"
-              placeholder="Name"
               value={appoint.name}
               onChange={(e) =>
                 setAppoint((prevAuthValues) => ({
@@ -41,6 +40,9 @@ export default function Booking() {
                   name: e.target.value,
                 }))
               }
+              id="username"
+              name="username"
+              placeholder="usrename"
             />
             <br />
             Email:
@@ -94,6 +96,11 @@ export default function Booking() {
             >
               Book
             </Buttons>
+            <Link href="/registration">
+              <Buttons /* onClick={() => handleAuthenticate()}*/>
+                registration
+              </Buttons>
+            </Link>
           </div>
         </form>
       </div>
