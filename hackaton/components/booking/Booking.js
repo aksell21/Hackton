@@ -31,7 +31,7 @@ export default function Booking() {
         <form onSubmit={handleSubmit}>
           <div className={styles.content}>
             Name:
-            <br />
+
             <input
               value={appoint.name}
               onChange={(e) =>
