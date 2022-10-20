@@ -3,6 +3,9 @@
     justify-content: center;
     align-items: center;
     height: 90vh;
+    background-image: url("../../public/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     width: 100vw;
 }
 
@@ -16,7 +19,7 @@
     border-radius: 1vh;
     height: 40vh;
     width: 20vw;
-    border: 8px solid rgb(0, 201, 201);
+    border: 8px solid rgb(0, 186, 186);
     border-radius: 0.7vh;
     -webkit-box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);
     box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);

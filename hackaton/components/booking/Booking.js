@@ -2,6 +2,8 @@ import styles from "./Booking.module.css";
 import { React } from "react"
 import { fazPedido } from "../../pages/api/src";
 import Buttons from "../buttons/Buttons";
+import { useState } from 'react';
+import Link from "next/link"
 
 export default function Booking() {
   const [appoint, setAppoint] = useState({ name: "", email: "", exercices: "", data : "" })
@@ -15,23 +17,15 @@ export default function Booking() {
     if (resultado.status === 400) {
       setErro(resultado.body.messagens)
     }
-   
-
   }
+ 
 
   return (
-    <div
-      className="booking"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      <h1> Booking Details</h1>
-      <br />
-      <div className="bookingId">
+    <div className={styles.outerDiv}>
+    <div className={styles.innerDiv}>
+      <div className={styles.title}><h1> Booking Details</h1></div>
         <form onSubmit={handleSubmit}>
+          <div className={styles.content}>
           Name:
           <br />
           <input 
@@ -43,7 +37,7 @@ export default function Booking() {
           <br />
           <input 
           value={appoint.email}
-          onChange={(e) => setAppoint(prevAuthValues => ({ ...prevAuthValues, name: e.target.value }))}
+          onChange={(e) => setAppoint(prevAuthValues => ({ ...prevAuthValues, email: e.target.value }))}
           id="Email" name="email" placeholder="email" />
           <br />
           Date:
@@ -52,49 +46,26 @@ export default function Booking() {
             value={appoint.data}
             onChange={(e) => setAppoint(prevAuthValues => ({ ...prevAuthValues, data: e.target.value }))}
             type="date"
-            id="Email"
-            name="email"
             placeholder="dd/mm/yyyy"
           />
           <br />
           Exercise:
           <br />
-          <select id="exercise" name="Exercise" 
-          onChange={(e) => setAppoint(prevAuthValues => ({ ...prevAuthValues, exercices: e.target.value }))}>
-            <option value="v1">Muscles</option>
-            <option value="v2">Shoulders</option>
-            <option value="v3">Leg day</option>
-            <option value="v4">Other</option>
-          </select>
-          <br />
-          <Link href="/main-page">
-            <Buttons type="submit"> Sumbit </Buttons>
-          </Link>
-          Exercise:
-          <br />
-          <input type="checkbox" />
-          Muscles
-          <br />
-          <input type="checkbox" />
-          Shoulders <br />
-          <input type="checkbox" />
-          Leg day
-          <br />
-          <input type="checkbox" />
-          Other
-          <br />
-          <input id="details" name="details" />
-          <br />
+          <input 
+          value={appoint.exercices}
+          onChange={(e) => setAppoint(prevAuthValues => ({ ...prevAuthValues, exercices: e.target.value }))}
+          id="text" name="text" placeholder="Exemple" />
           <br />
           <Buttons
             type="submit"
-            onClick={() => alert("Appointment Booked ")}
+            onClick={() => handleSubmit}  
             className={styles.alert}
-          >
+            >
             Book
           </Buttons>
-        </form>
-      </div>
+          </div>
+       </form>
+     </div>
     </div>
   );
 }

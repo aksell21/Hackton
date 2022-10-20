@@ -5,18 +5,17 @@ export default async function (req, res) {
         const {
             name,
             email,
+            data,
             exercise,
         } = req.body
+
         console.log("Cheguei", req.body)
-        await addAppointement(req.body)
+       const resulta =  await addAppointement(req.body.addAppointement)
 
 
-        if (!req.body) {
-            
-            res.status(404).json({messagem : 'errou '})
-            return value === undefined || value.length === 0
-
-            
+        if (!resulta) {
+            return req.body === undefined || req.body.length === 0
+           
         }
         res.status(200).json({ message: 'ok' })
     }

@@ -8,7 +8,7 @@ export default function Header() {
     return (
         <div>
             <div className={styles.headBar}>
-                <Link href="/">Odyssey</Link>
+                <Link href="/login"><span>Odyssey</span></Link>
                 <Link href="/login"><Buttons>Login</Buttons ></Link>
             </div>
             <div className={styles.headSmallBar}></div>

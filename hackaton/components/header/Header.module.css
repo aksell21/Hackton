@@ -13,3 +13,8 @@
     width: 100vw;
     height: 1vh;
 }
+.headBar>span{
+    font-weight: 600;
+    font-size:xx-large;
+    cursor:pointer;
+}

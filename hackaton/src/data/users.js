@@ -1,5 +1,5 @@
-
 import { getMongoCollection } from "./db"
+
 
 const DATABASE = "hack406"
 const USER_COLLECTION = 'users'
@@ -22,3 +22,4 @@ export async function addAppointement(cliente) {
     const result = await collection.insertOne(cliente)
     return result.insertedId
 }
+
