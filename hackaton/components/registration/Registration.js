@@ -25,7 +25,7 @@ export default function Register() {
 
     if (resultado.status === 201) {
       console.log(resultado.status)
-      router.push("/")
+      router.push("/main-page")
 
     }
 
@@ -63,7 +63,7 @@ export default function Register() {
             <input onChange={(e) => setUser(prevAuthValues => ({ ...prevAuthValues, number: e.target.value }))} placeholder="999 999 999" />
 
           </div>
-          <Link href="/main-page"><Buttons>Adicionar Cliente</Buttons></Link>
+          <Buttons>Adicionar Cliente</Buttons>
         </form>
       </div>
     </div>

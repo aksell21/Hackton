@@ -23,6 +23,9 @@ export function HeaderLoged() {
         <Link href="/main-page">
           <span className={styles.title}>Odyssey</span>
         </Link>
+        <Link href="/">
+          <Buttons>Logout</Buttons>
+        </Link>
       </div>
       <div className={styles.headSmallBar}></div>
     </div>
