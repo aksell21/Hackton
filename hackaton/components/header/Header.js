@@ -20,3 +20,15 @@ export default function Header() {
     </div>
   );
 }
+export function HeaderLoged() {
+  return (
+    <div>
+      <div className={styles.headBar}>
+        <Link href="/">
+          <span className={styles.title}>Odyssey</span>
+        </Link>
+      </div>
+      <div className={styles.headSmallBar}></div>
+    </div>
+  )
+}

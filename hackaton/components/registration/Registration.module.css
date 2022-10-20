@@ -4,15 +4,19 @@
     width: 100vw;
     align-items: center;
     justify-content: center;
+    background-image: url("../../public/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .innerDiv {
     display: flex;
     flex-direction: column;
-    background-color: aqua;
+    background-color: #FFBF00;
     height: 40vh;
     width: 20vw;
-    border: 8px solid rgb(0, 186, 186);;
+    border: 8px solid orange;
+    ;
     border-radius: 0.7vh;
     -webkit-box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);
     box-shadow: 0px 0px 20px -5px rgba(0, 0, 0, 0.5);

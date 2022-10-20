@@ -1,13 +1,13 @@
-import Header from "../components/header/Header";
+import Header, { HeaderLoged } from "../components/header/Header"
 import styles from "../styles/Home.module.css";
 import Login from "../components/login/Login"
 export default function Home() {
 
   return (
     <div>
-      <Header/>
+      <HeaderLoged />
       <div className={styles.container}>
-        <Login/>
+        <Login />
       </div>
     </div>
   );
