@@ -42,9 +42,10 @@ const bookings = [
   },
 ];
 
-// JSX code
 export default function MainPage() {
   //STATES
+
+  //Event
   const [newEvent, setNewEvent] = useState({
     title: "",
     start: "",
@@ -52,16 +53,21 @@ export default function MainPage() {
     exercise: "",
     allDay: false,
   });
-  const [allBokkings, setAllBookings] = useState(bookings); // make all events into a state
+
+  const [allBookings, setAllBookings] = useState(bookings); // Make all events into a state
+
+  const [isCreated, setIsCreated] = useState(false); // When an event is created, make it unselectable
 
   // Event Handlers
   const handleAddEvent = () => {
-    setAllBookings([...allBokkings, newEvent]); // pushing the new event into the All Events array
+    setAllBookings([...allBookings, newEvent]); // Pushing the new event into the All Events array
   };
 
+  // Alert appears to input the title of the booking
   const handleSelectSlot = useCallback(
     ({ start, end }) => {
-      const title = window.prompt("Add Title:");
+      const title = window.prompt("Insert Title:");
+      const exercise = win;
       if (title) {
         setAllBookings((prev) => [...prev, { start, end, title }]);
       }
@@ -69,6 +75,7 @@ export default function MainPage() {
     [setAllBookings]
   );
 
+  // When you click on an event, a window appears containing the title of the event. TO DO: if possible, add the name of the person on it
   const handleSelectEvent = useCallback(
     (event) => window.alert(event.title),
     []
@@ -82,17 +89,20 @@ export default function MainPage() {
     []
   );
 
+  // min and max are the only hours that appear on the calendar
   return (
     <Calendar
       selectable
       defaultView="week"
       localizer={localizer}
-      events={allBokkings}
+      events={allBookings}
       startAccessor="start"
       endAccessor="end"
       onSelectEvent={handleSelectEvent}
       onSelectSlot={handleSelectSlot}
       scrollToTime={scrollToTime}
+      min={new Date(2012, 10, 0, 8, 0, 0)}
+      max={new Date(2012, 10, 0, 19, 0, 0)}
       style={{ height: 500, margin: "50px" }}
     />
   );
