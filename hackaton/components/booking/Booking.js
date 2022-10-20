@@ -7,13 +7,19 @@ import Link from "next/link"
 
 export default function Booking() {
   const [appoint, setAppoint] = useState({ name: "", email: "", exercices: "", data : "" })
+<<<<<<< HEAD
   
 
+=======
+>>>>>>> 31eba1eb4dc8cad8160af710def7cb075aa5b3c0
   const handleSubmit = async (e) => {
     e.preventDefault()
     const resultado = await fazPedido("/api/adicionarappoint", "POST", appoint)
     setAppoint(res.body)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 31eba1eb4dc8cad8160af710def7cb075aa5b3c0
     if (resultado.status === 400) {
       setErro(resultado.body.messagens)
     }
@@ -27,11 +33,18 @@ export default function Booking() {
         <form onSubmit={handleSubmit}>
           <div className={styles.content}>
           Name:
+<<<<<<< HEAD
           <br />
           <input 
           value={appoint.name}
           onChange={(e) => setAppoint(prevAuthValues => ({ ...prevAuthValues, name: e.target.value }))}
           id="username" name="username" placeholder="usrename" />
+=======
+          <input id="username" name="username" placeholder="Name" 
+            value={appoint.name}
+            onChange={(e) => setAppoint(prevAuthValues => ({ ...prevAuthValues, name: e.target.value }))}
+          />
+>>>>>>> 31eba1eb4dc8cad8160af710def7cb075aa5b3c0
           <br />
           Email:
           <br />
