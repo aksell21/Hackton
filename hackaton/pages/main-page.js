@@ -1,16 +1,15 @@
-import { Calendar, dateFnsLocalizer } from "react-big-calendar";
+import { Calendar, dateFnsLocalizer, DateLocalizer } from "react-big-calendar";
 import format from "date-fns/format";
 import parse from "date-fns/parse";
 import startOfWeek from "date-fns/startOfWeek";
 import getDay from "date-fns/getDay";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-datepicker/dist/react-datepicker.css";
-import React, { useState } from "react";
-import DatePicker from "react-datepicker";
-import Buttons from "../components/buttons/Buttons";
+import React, { useState, useCallback, useMemo } from "react";
+import PropTypes from "prop-types";
 
 const locales = {
-  pt: require("date-fns/locale/pt"),
+  "en-US": require("date-fns/locale/en-US"),
 };
 
 const localizer = dateFnsLocalizer({
@@ -21,13 +20,13 @@ const localizer = dateFnsLocalizer({
   locales,
 });
 
-// DUMMY DATA
+// Dummy data of bookings
 const bookings = [
   {
     title: "Hackathon",
     allDay: false,
-    start: new Date(2022, 9, 19, 10),
-    end: new Date(2022, 9, 19, 11),
+    start: new Date(2022, 9, 19, 12),
+    end: new Date(2022, 9, 20, 12),
   },
   {
     title: "Vacation",
@@ -43,6 +42,7 @@ const bookings = [
   },
 ];
 
+// JSX code
 export default function MainPage() {
   //STATES
   const [newEvent, setNewEvent] = useState({
@@ -54,68 +54,50 @@ export default function MainPage() {
   });
   const [allBokkings, setAllBookings] = useState(bookings); // make all events into a state
 
-  const [defaultBoolean, setDefaultBoolean] = useState(false);
-
   // Event Handlers
   const handleAddEvent = () => {
     setAllBookings([...allBokkings, newEvent]); // pushing the new event into the All Events array
   };
 
+  const handleSelectSlot = useCallback(
+    ({ start, end }) => {
+      const title = window.prompt("Add Title:");
+      if (title) {
+        setAllBookings((prev) => [...prev, { start, end, title }]);
+      }
+    },
+    [setAllBookings]
+  );
+
+  const handleSelectEvent = useCallback(
+    (event) => window.alert(event.title),
+    []
+  );
+
+  const { defaultDate, scrollToTime } = useMemo(
+    () => ({
+      defaultDate: new Date(2015, 3, 12),
+      scrollToTime: new Date(1970, 1, 1, 6),
+    }),
+    []
+  );
+
   return (
-    <div>
-      {/* <WeeklyCalendar /> */}
-      <h1>Calendar</h1>
-      <h2>Add New Event</h2>
-      <div>
-        <input
-          type="text"
-          placeholder="Add Title"
-          style={{ width: "20%", marginRight: "10px" }}
-          value={newEvent.title}
-          onChange={(e) =>
-            setNewEvent({
-              ...newEvent,
-              title: e.target.value,
-              allDay: defaultBoolean,
-            })
-          }
-        ></input>
-      </div>
-
-      <DatePicker
-        placeholderText="Select Date"
-        style={{ marginRight: "10px" }}
-        selected={newEvent.start}
-        onChange={(start) => setNewEvent({ ...newEvent, start })}
-      />
-      <DatePicker
-        placeholderText="End Date"
-        selected={newEvent.end}
-        onChange={(end) => setNewEvent({ ...newEvent, end })}
-      />
-
-      <input
-        type="text"
-        placeholder="Exercise:"
-        value={newEvent.exercise}
-        onChange={(e) => setNewEvent({ ...newEvent, exercise: e.target.value })}
-      ></input>
-
-      <Buttons style={{ marginTop: "10px" }} onClick={handleAddEvent}>
-        Submit Event
-      </Buttons>
-
-      <Calendar
-        selectable
-        resizable
-        date={new Date(Date.now())}
-        defaultView="week"
-        localizer={localizer}
-        events={allBokkings}
-        startAccessor="start"
-        endAccessor="end"
-        style={{ height: 500, margin: "50px" }}
-      />
-    </div>
+    <Calendar
+      selectable
+      defaultView="week"
+      localizer={localizer}
+      events={allBokkings}
+      startAccessor="start"
+      endAccessor="end"
+      onSelectEvent={handleSelectEvent}
+      onSelectSlot={handleSelectSlot}
+      scrollToTime={scrollToTime}
+      style={{ height: 500, margin: "50px" }}
+    />
   );
 }
+
+MainPage.propTypes = {
+  localizer: PropTypes.instanceOf(DateLocalizer),
+};

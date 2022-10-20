@@ -9,15 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "mongodb": "^4.11.0",
-=======
     "@fullcalendar/daygrid": "^5.11.3",
     "@fullcalendar/interaction": "^5.11.3",
     "@fullcalendar/react": "^5.11.2",
     "@fullcalendar/timegrid": "^5.11.3",
     "mongodb": "^4.10.0",
->>>>>>> 31eba1eb4dc8cad8160af710def7cb075aa5b3c0
     "next": "12.3.1",
     "react": "18.2.0",
     "react-big-calendar": "^1.5.0",
