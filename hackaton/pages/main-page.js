@@ -7,6 +7,7 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 import "react-datepicker/dist/react-datepicker.css";
 import React, { useState, useCallback, useMemo } from "react";
 import PropTypes from "prop-types";
+import { fazPedido } from "../src/pedidos";
 
 const locales = {
   "en-US": require("date-fns/locale/en-US"),
@@ -44,8 +45,7 @@ const bookings = [
 
 export default function MainPage() {
   //STATES
-
-  //Event
+  //const resultado = await fazPedido("/api/adicionarappoint", "POST", appoint);
   const [newEvent, setNewEvent] = useState({
     title: "",
     start: "",
@@ -64,22 +64,48 @@ export default function MainPage() {
   };
 
   // Alert appears to input the title of the booking
+  // Then the new event is added to the All Events array
   const handleSelectSlot = useCallback(
-    ({ start, end }) => {
-      const title = window.prompt("Insert Title:");
-      const exercise = win;
+    async ({ start, end }) => {
+      const title = window.prompt("Add Execercise:");
       if (title) {
-        setAllBookings((prev) => [...prev, { start, end, title }]);
+        console.log("YEEHOO");
+        const resultado = await fazPedido("/api/adicionarappoint", "POST", {
+          title,
+          start,
+          end,
+        });
+
+        setAllBookings((prev) => {
+          if (
+            !prev.some(
+              (e) =>
+                (start <= e.start && end >= e.start) ||
+                (start <= e.end && end >= e.end)
+            )
+          ) {
+            return [...prev, { start, end, title }];
+          }
+          return prev;
+        });
+
+        // setNewEvent(resultado.body)
+      } else {
+        console.log("WOOHOO");
       }
     },
     [setAllBookings]
   );
 
   // When you click on an event, a window appears containing the title of the event. TO DO: if possible, add the name of the person on it
-  const handleSelectEvent = useCallback(
-    (event) => window.alert(event.title),
-    []
-  );
+  const handleSelectEvent = useCallback((event) => {
+    const alerta = window.confirm(event.title);
+    if (alerta === true) {
+      console.log("OK");
+    } else {
+      console.log("NOT OK");
+    }
+  }, []);
 
   const { defaultDate, scrollToTime } = useMemo(
     () => ({
@@ -100,6 +126,7 @@ export default function MainPage() {
       endAccessor="end"
       onSelectEvent={handleSelectEvent}
       onSelectSlot={handleSelectSlot}
+      // onSelectEnd={() => console.log("HEY HO")}
       scrollToTime={scrollToTime}
       min={new Date(2012, 10, 0, 8, 0, 0)}
       max={new Date(2012, 10, 0, 19, 0, 0)}
