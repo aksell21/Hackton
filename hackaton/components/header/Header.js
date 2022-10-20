@@ -16,8 +16,6 @@ export default function Header() {
     </div>
   );
 }
-<<<<<<< HEAD
-=======
 export function HeaderLoged() {
   return (
     <div>
@@ -28,6 +26,5 @@ export function HeaderLoged() {
       </div>
       <div className={styles.headSmallBar}></div>
     </div>
-  )
+  );
 }
->>>>>>> d22a2a8c0bf7608b065427c768417623538ed4e7

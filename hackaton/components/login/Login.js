@@ -3,10 +3,6 @@ import styles from "./Login.module.css";
 import Link from "next/link";
 import { React } from "react";
 
-<<<<<<< HEAD
-=======
-
->>>>>>> d22a2a8c0bf7608b065427c768417623538ed4e7
 export default function Login() {
   /*
         const [conta, setContas] = useState({ email: "", password: "" })
